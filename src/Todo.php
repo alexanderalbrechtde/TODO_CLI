@@ -1,8 +1,6 @@
 <?php
 
-namespace TaskCli;
-
-class Task
+class Todo
 {
     private string $status = 'not begun';
     private string $created_at;
