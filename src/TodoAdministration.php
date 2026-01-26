@@ -44,42 +44,42 @@ class TodoAdministration
 
     public function getAllTodos(): array
     {
-
+        //alle Aufgabennamen plus id ausgeben
     }
 
     public function updateTask(): void
     {
-
+        //Task updaten
     }
 
     public function updateFlagDone(): void
     {
-
+        //statusflag auf done ändern
     }
 
     public function updateFlagInProgress(): void
     {
-
+        //statusflag auf in progress ändern
     }
 
     public function deleteTodo(): void
     {
-
+        //task anhand der id löschen
     }
 
     public function getAllDoneTodos(): void
     {
-
+        //alle todos mit der statusflag done ausgeben
     }
 
     public function getAllInProgressTodos(): void
     {
-
+        //alle todos mit der statusflag in progress ausgeben
     }
 
     public function getAllNotBegunTodos(): void
     {
-
+        //alle todos mit der statusflag not begun ausgeben
     }
 
 }
