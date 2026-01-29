@@ -16,7 +16,7 @@ class TodoAdministration
         }
     }
 
-    public function addTodo(string $name, string $description): void
+    public function addTodo(string $name, string $description): string
     {
         require_once('Todo.php');
         //Task erstellen
@@ -26,7 +26,7 @@ class TodoAdministration
         $this->saveTodoFile();
         $this->nextId++;
 
-        echo 'ToDo successfully created';
+        return 'ToDo successfully created';
     }
 
     public function saveTodoFile(): void
@@ -42,12 +42,21 @@ class TodoAdministration
         return json_decode($fileContent, true) ?? [];
     }
 
-    public function getAllTodos(): array
+    public function getAllTodos(): string
     {
         //alle Aufgabennamen plus id ausgeben
+        $todos = $this->getTodoFile();
+        $output = '';
+
+        foreach ($todos as $todo) {
+            $output .= "-----------------------\n";
+            $output .= "Todo: " . $todo['name'] . " ID: " . $todo['id'] . "\n";
+            $output .= "-----------------------\n";
+        }
+        return $output;
     }
 
-    public function updateTask(): void
+    public function updateTask(): string
     {
         //Task updaten
     }
