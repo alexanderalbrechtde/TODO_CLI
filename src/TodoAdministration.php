@@ -56,9 +56,25 @@ class TodoAdministration
         return $output;
     }
 
-    public function updateTask(): string
+    public function updateTask(int $id, string $value): string
     {
         //Task updaten
+        $todos = $this->getTodoFile();
+        $found = false;
+
+        foreach ($todos as &$todo) {
+            if ($todo['id'] == $id) {
+                $todo['name'] = $value;
+                $found = true;
+                break;
+            }
+        }
+        if ($found) {
+            $this->todos = $todos;
+            $this->saveTodoFile();
+            return 'ToDo successfully updated';
+        }
+        return 'ToDo not updated';
     }
 
     public function updateFlagDone(): void
