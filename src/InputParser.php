@@ -14,6 +14,7 @@ $output = match ($command) {
     'add' => $todoAdmin->addTodo($arg1, $arg2),
     'update' => $todoAdmin->updateTask($arg1, $arg2),
     'done' => $todoAdmin->updateFlagDone($arg1),
+    'inProgress' => $todoAdmin->updateFlagInProgress($arg1),
     default => 'unknown command'
 };
 echo $output;

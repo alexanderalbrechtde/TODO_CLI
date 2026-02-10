@@ -99,9 +99,25 @@ class TodoAdministration
         return 'ToDo not found!';
     }
 
-    public function updateFlagInProgress(): void
+    public function updateFlagInProgress( int $id): string
     {
         //statusflag auf in progress ändern
+        $todos = $this->getTodoFile();
+        $found = false;
+
+        foreach($todos as &$todo){
+            if($todo['id'] == $id){
+                $todo['status'] = 'in Progress';
+                $found = true;
+                break;
+            }
+        }
+        if($found){
+            $this->todos = $todos;
+            $this->saveTodoFile();
+            return 'ToDo marked in Progress!';
+        }
+        return 'ToDo not found!';
     }
 
     public function deleteTodo(): void
