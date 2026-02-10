@@ -13,6 +13,7 @@ $output = match ($command) {
     'show-all' => $todoAdmin->getAllTodos(),
     'add' => $todoAdmin->addTodo($arg1, $arg2),
     'update' => $todoAdmin->updateTask($arg1, $arg2),
+    'done' => $todoAdmin->updateFlagDone($arg1),
     default => 'unknown command'
 };
 echo $output;

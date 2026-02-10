@@ -26,7 +26,7 @@ class TodoAdministration
         $this->saveTodoFile();
         $this->nextId++;
 
-        return 'ToDo successfully created';
+        return 'ToDo successfully created!';
     }
 
     public function saveTodoFile(): void
@@ -72,14 +72,31 @@ class TodoAdministration
         if ($found) {
             $this->todos = $todos;
             $this->saveTodoFile();
-            return 'ToDo successfully updated';
+            return 'ToDo successfully updated!';
         }
-        return 'ToDo not updated';
+        return 'ToDo not updated!';
     }
 
-    public function updateFlagDone(): void
+    public function updateFlagDone(int $id): string
     {
         //statusflag auf done ändern
+
+        $todos = $this->getTodoFile();
+        $found = false;
+
+        foreach($todos as &$todo){
+            if($todo['id'] == $id){
+                $todo['status'] = 'done';
+                $found = true;
+                break;
+            }
+        }
+        if($found){
+            $this->todos = $todos;
+            $this->saveTodoFile();
+            return 'ToDo marked done!';
+        }
+        return 'ToDo not found!';
     }
 
     public function updateFlagInProgress(): void
