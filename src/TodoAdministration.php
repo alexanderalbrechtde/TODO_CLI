@@ -84,14 +84,14 @@ class TodoAdministration
         $todos = $this->getTodoFile();
         $found = false;
 
-        foreach($todos as &$todo){
-            if($todo['id'] == $id){
+        foreach ($todos as &$todo) {
+            if ($todo['id'] == $id) {
                 $todo['status'] = 'done';
                 $found = true;
                 break;
             }
         }
-        if($found){
+        if ($found) {
             $this->todos = $todos;
             $this->saveTodoFile();
             return 'ToDo marked done!';
@@ -99,20 +99,20 @@ class TodoAdministration
         return 'ToDo not found!';
     }
 
-    public function updateFlagInProgress( int $id): string
+    public function updateFlagInProgress(int $id): string
     {
         //statusflag auf in progress ändern
         $todos = $this->getTodoFile();
         $found = false;
 
-        foreach($todos as &$todo){
-            if($todo['id'] == $id){
+        foreach ($todos as &$todo) {
+            if ($todo['id'] == $id) {
                 $todo['status'] = 'in Progress';
                 $found = true;
                 break;
             }
         }
-        if($found){
+        if ($found) {
             $this->todos = $todos;
             $this->saveTodoFile();
             return 'ToDo marked in Progress!';
@@ -120,9 +120,22 @@ class TodoAdministration
         return 'ToDo not found!';
     }
 
-    public function deleteTodo(): void
+    public function deleteTodo(int $id): string
     {
+        $todos = $this->getTodoFile();
+
         //task anhand der id löschen
+        foreach ($todos as $index => $todo) {
+            if ($todo['id'] == $id) {
+                unset($todos[$index]);
+                $this->todos = array_values($todos);
+
+                $this->saveTodoFile();
+                return 'ToDo successfully deleted';
+            }
+
+        }
+        return 'ToDo not found';
     }
 
     public function getAllDoneTodos(): void

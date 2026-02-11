@@ -1,12 +1,5 @@
 [
     {
-        "id": 1,
-        "name": "lol",
-        "description": "complete",
-        "status": "in Progress",
-        "createdAt": "2026-01-26 23:15:23"
-    },
-    {
         "id": 2,
         "name": "dishwasher",
         "description": "complete",
