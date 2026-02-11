@@ -10,7 +10,7 @@
         "id": 3,
         "name": "dishwasher",
         "description": "complete",
-        "status": "not begun",
+        "status": "done",
         "createdAt": "2026-01-29 21:32:15"
     }
 ]

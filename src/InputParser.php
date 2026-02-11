@@ -16,6 +16,9 @@ $output = match ($command) {
     'done' => $todoAdmin->updateFlagDone($arg1),
     'inProgress' => $todoAdmin->updateFlagInProgress($arg1),
     'delete' => $todoAdmin->deleteTodo($arg1),
+    'all-done' => $todoAdmin->getAllDoneTodos(),
+    'all-Progress' => $todoAdmin->getAllInProgressTodos(),
+    'all-NotBegun' => $todoAdmin->getAllNotBegunTodos(),
     default => 'unknown command'
 };
 echo $output;

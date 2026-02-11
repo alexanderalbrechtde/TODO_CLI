@@ -138,19 +138,42 @@ class TodoAdministration
         return 'ToDo not found';
     }
 
-    public function getAllDoneTodos(): void
+    public function getAllDoneTodos(): string
     {
         //alle todos mit der statusflag done ausgeben
+        $todos = $this->getTodoFile();
+
+        foreach ($todos as $todo) {
+            if ($todo['status'] == 'done') {
+                return 'Todo: ' . $todo['name'] . ' ID: ' . $todo['id'] . "\n";
+            }
+        }
+        return 'no Todo done';
     }
 
-    public function getAllInProgressTodos(): void
+    public function getAllInProgressTodos(): string
     {
         //alle todos mit der statusflag in progress ausgeben
+        $todos = $this->getTodoFile();
+
+        foreach ($todos as $todo) {
+            if ($todo['status'] == 'in progress') {
+                return 'Todo: ' . $todo['name'] . ' ID: ' . $todo['id'] . "\n";
+            }
+        }
+        return 'no Todo done';
     }
 
-    public function getAllNotBegunTodos(): void
+    public function getAllNotBegunTodos(): string
     {
-        //alle todos mit der statusflag not begun ausgeben
+        $todos = $this->getTodoFile();
+
+        foreach ($todos as $todo) {
+            if ($todo['status'] == 'not begun') {
+                return 'Todo: ' . $todo['name'] . ' ID: ' . $todo['id'] . "\n";
+            }
+        }
+        return 'no Todo done';
     }
 
 }
